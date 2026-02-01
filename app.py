@@ -1,7 +1,5 @@
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem
-from PyQt5.QtGui import QColor
 from PyQt5.QtCore import QCoreApplication
-import os
 import traceback
 import design
 from pathlib import Path
@@ -9,6 +7,7 @@ from excel import Excel
 from goods import Item
 from xmlparser import XMLParser
 import logging
+
 
 logger = logging.getLogger(__name__)
 

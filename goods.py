@@ -1,29 +1,37 @@
+from settings import load_app_settings
+
+
 class Item:
 
-    attributes = {
-        "acc_data": {"column": "ДатаСчФ", "width": 10},
-        "acc_num": {"column": "НомерСчФ", "width": 15},
-        "acc_org_name": {"column": "НаимЭконСубСост", "width": 50},
-        "id_mark": {"column": "КИЗ", "width": 40},
-        "row_num": {"column": "НомСтр", "width": 8},
-        "name": {"column": "НаимТов", "width": 40},
-        "price": {"column": "ЦенаТов", "width": 10},
-        "amount": {"column": "КолТов", "width": 7}
-    }
+    settings = load_app_settings()
+    attributes = settings["attributes"]
+
+    # attributes = {
+    #     "acc_data": {"column": "ДатаДок", "width": 10},
+    #     "acc_num": {"column": "НомерДок", "width": 15},
+    #     "acc_org_name": {"column": "НаимЭконСубСост", "width": 50},
+    #     "id_mark": {"column": "КИЗ", "width": 40},
+    #     "row_num": {"column": "НомСтр", "width": 8},
+    #     "name": {"column": "НаимТов", "width": 40},
+    #     "price": {"column": "ЦенаТов", "width": 10},
+    #     "amount": {"column": "КолТов", "width": 7}
+    # }
 
     columns = [{"header": v["column"]} for k, v in attributes.items()]
 
-    xpath = {
-        "acc_data": "//Файл/Документ/СвСчФакт/@ДатаСчФ",
-        "acc_num": "//Файл/Документ/СвСчФакт/@НомерСчФ",
-        "acc_org_name": "//Файл/Документ/@НаимЭконСубСост",
-        "goods": "//Файл/Документ/ТаблСчФакт/СведТов",
-        "row_num": "@НомСтр",
-        "name": "@НаимТов",
-        "price": "@ЦенаТов",
-        "amount": "@КолТов",
-        "id_mark": "ДопСведТов/НомСредИдентТов/КИЗ/text()"
-    }
+    xpath = settings["xpaths"]
+
+    # xpath = {
+    #     "acc_data": "//Файл/Документ/СвСчФакт/@ДатаДок",
+    #     "acc_num": "//Файл/Документ/СвСчФакт/@НомерДок",
+    #     "acc_org_name": "//Файл/Документ/@НаимЭконСубСост",
+    #     "goods": "//Файл/Документ/ТаблСчФакт/СведТов",
+    #     "row_num": "@НомСтр",
+    #     "name": "@НаимТов",
+    #     "price": "@ЦенаТов",
+    #     "amount": "@КолТов",
+    #     "id_mark": "ДопСведТов/НомСредИдентТов/КИЗ/text()"
+    # }
 
     def __init__(self,
                  acc_data,
